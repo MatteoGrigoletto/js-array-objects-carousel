@@ -15,18 +15,29 @@ body{
 }
 .items{
     position: relative;
+    width: 300px;
+    height: 350px;
+}
+.big-img{
+    position: relative;
     width: 700px;
     height: 350px;
+    background-color: black;
 }
 .item{
     position: relative;
-    height: 100%;
-   display: none;
+    height: calc(100% / 5);
+   /* display: none; */
 }
- img{
+#photo{
     width: 100%;
+    display: block;
     height: 100%;
-    
+}
+.big-img > img{
+    width: 100%;
+    display: block;
+    height: 100%;
 }
 .after , .before{
     position: absolute;
