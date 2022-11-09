@@ -23,7 +23,35 @@ const images = [
         text: 'Marvel\'s Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.',
     }
 ];
+//function
+function up() {
+    img[active].classList.remove(`d-block`);
+    if(active == img.length-1){
+        active = 0;
+    }
+    else{
+        active++;
+        }
+    img[active].classList.add('d-block');
+    bigImg.src = images[active].image;
+    titleScroll.innerHTML = images[active].title;
+    textScroll.innerHTML = images[active].text;
+};
 
+function bottom(){
+    img[active].classList.remove('d-block');
+    if(active == 0){   
+        active = img.length-1;
+        }
+        else{
+            active--;
+        }
+        img[active].classList.add('d-block');
+        bigImg.src = images[active].image;
+        titleScroll.innerHTML = images[active].title;
+        textScroll.innerHTML = images[active].text;
+    }; 
+//end function
 
 let items = document.querySelector('.items');
 let bigImg  = document.querySelector(`.big-img img`)
@@ -45,65 +73,10 @@ let titleScroll =  document.getElementById(`title`);
 titleScroll.innerHTML = images[active].title;
 let textScroll =  document.getElementById(`text`);
 textScroll.innerHTML = images[active].text;
-document.querySelector('.after').addEventListener("click" , function(){
-    
-    img[active].classList.remove(`d-block`);
-    if(active == img.length-1){
-        active = 0;
-    }
-    else{
-        active++;
-        }
-    img[active].classList.add('d-block');
-    bigImg.src = images[active].image;
-    titleScroll.innerHTML = images[active].title;
-    textScroll.innerHTML = images[active].text;
-});
-document.querySelector('.before').addEventListener("click" , function(){
-    
-    img[active].classList.remove('d-block');
-    if(active == 0){   
-        active = img.length-1;
-        }
-        else{
-            active--;
-        }
-        img[active].classList.add('d-block');
-        bigImg.src = images[active].image;
-        titleScroll.innerHTML = images[active].title;
-        textScroll.innerHTML = images[active].text;
-    }); 
-
-    function autoplay() {
-        img[active].classList.remove(`d-block`);
-        if(active == img.length-1){
-            active = 0;
-        }
-        else{
-            active++;
-            }
-        img[active].classList.add('d-block');
-        bigImg.src = images[active].image;
-        titleScroll.innerHTML = images[active].title;
-        textScroll.innerHTML = images[active].text;
-    };
-
-    function autoplayInvert(){
-        img[active].classList.remove('d-block');
-        if(active == 0){   
-            active = img.length-1;
-            }
-            else{
-                active--;
-            }
-            img[active].classList.add('d-block');
-            bigImg.src = images[active].image;
-            titleScroll.innerHTML = images[active].title;
-            textScroll.innerHTML = images[active].text;
-        }; 
-
-let play = setInterval(autoplay, 3000);
-
+document.querySelector('.after').addEventListener("click" , up);
+document.querySelector('.before').addEventListener("click" , bottom);
+//interval function
+let play = setInterval(up, 3000);
 let playBtn = document.getElementById(`play`);
 let stopBtn = document.getElementById(`stop`);
 
@@ -111,5 +84,5 @@ stopBtn.addEventListener(`click`, function(){
     clearInterval(play);
 });
 playBtn.addEventListener(`click`, function(){
-    play = setInterval(autoplayInvert, 3000);
+    play = setInterval(bottom, 3000);
 });
