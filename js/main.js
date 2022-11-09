@@ -32,9 +32,6 @@ images.forEach ((object ) => {
 const template = document.getElementById(`template`).content.cloneNode(true);
 
  template.getElementById(`photo`).src = object.image;
- //template.getElementById(`title`).innerHTML = object.title;
- //template.getElementById(`text`).innerHTML = object.text;
-
 
  items.append(template);
 } );          
@@ -44,9 +41,12 @@ item.classList.add(`d-block`);
 
 let img = document.querySelectorAll(`.item`);
 bigImg.src = images[active].image;
-
+let titleScroll =  document.getElementById(`title`);
+titleScroll.innerHTML = images[active].title;
+let textScroll =  document.getElementById(`text`);
+textScroll.innerHTML = images[active].text;
 document.querySelector('.after').addEventListener("click" , function(){
-
+    
     img[active].classList.remove(`d-block`);
     if(active == img.length-1){
         active = 0;
@@ -56,10 +56,11 @@ document.querySelector('.after').addEventListener("click" , function(){
         }
     img[active].classList.add('d-block');
     bigImg.src = images[active].image;
+    titleScroll.innerHTML = images[active].title;
+    textScroll.innerHTML = images[active].text;
 });
 document.querySelector('.before').addEventListener("click" , function(){
     
-    console.log(img);
     img[active].classList.remove('d-block');
     if(active == 0){   
         active = img.length-1;
@@ -69,4 +70,6 @@ document.querySelector('.before').addEventListener("click" , function(){
         }
         img[active].classList.add('d-block');
         bigImg.src = images[active].image;
+        titleScroll.innerHTML = images[active].title;
+        textScroll.innerHTML = images[active].text;
     }); 
