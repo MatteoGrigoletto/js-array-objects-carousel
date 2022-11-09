@@ -88,11 +88,28 @@ document.querySelector('.before').addEventListener("click" , function(){
         textScroll.innerHTML = images[active].text;
     };
 
-    let play = setInterval(autoplay, 3000);
+    function autoplayInvert(){
+        img[active].classList.remove('d-block');
+        if(active == 0){   
+            active = img.length-1;
+            }
+            else{
+                active--;
+            }
+            img[active].classList.add('d-block');
+            bigImg.src = images[active].image;
+            titleScroll.innerHTML = images[active].title;
+            textScroll.innerHTML = images[active].text;
+        }; 
 
-bigImg.addEventListener(`mouseenter`, function(){
+let play = setInterval(autoplay, 3000);
+
+let playBtn = document.getElementById(`play`);
+let stopBtn = document.getElementById(`stop`);
+
+stopBtn.addEventListener(`click`, function(){
     clearInterval(play);
 });
-bigImg.addEventListener(`mouseleave`, function(){
-    play = setInterval(autoplay, 3000);
+playBtn.addEventListener(`click`, function(){
+    play = setInterval(autoplayInvert, 3000);
 });
