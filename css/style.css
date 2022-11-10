@@ -41,7 +41,7 @@ button{
     height: calc(100% / 5);
   
 }
-#photo{
+.photo{
     width: 100%;
     display: block;
     height: 100%;

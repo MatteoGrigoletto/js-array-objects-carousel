@@ -58,18 +58,20 @@ let bigImg  = document.querySelector(`.big-img img`)
 let active = 0
 images.forEach ((object ) => {
 const template = document.getElementById(`template`).content.cloneNode(true);
- template.getElementById(`photo`).src = object.image;
+ template.querySelector(`.photo`).src = object.image;
  items.append(template);
 } );          
 
 let item = document.querySelector(`.item`);
 item.classList.add(`d-block`);
 let img = document.querySelectorAll(`.item`);
-bigImg.src = images[active].image;
 let titleScroll =  document.getElementById(`title`);
-titleScroll.innerHTML = images[active].title;
 let textScroll =  document.getElementById(`text`);
-textScroll.innerHTML = images[active].text;
+//Alternativa prima immagine con  js per mantenere Html separato completamente dall'array
+
+//bigImg.src = images[active].image;
+//titleScroll.innerHTML = images[active].title;
+//textScroll.innerHTML = images[active].text;
 document.querySelector('.after').addEventListener("click" , up);
 document.querySelector('.before').addEventListener("click" , bottom);
 //interval function
