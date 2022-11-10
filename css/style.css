@@ -65,8 +65,12 @@ button{
 }
 .d-block{
     display: block;
-    border: 3px solid white;
-    opacity: 0.5;
+    border: 3px solid rgb(240, 185, 160);
+    filter: none;
+    transform: scale(1.05);
+}
+.item:not(.d-block){
+    filter:sepia(1);
 }
 #information {
     color: white;
