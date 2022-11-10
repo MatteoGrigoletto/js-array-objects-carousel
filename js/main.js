@@ -58,15 +58,12 @@ let bigImg  = document.querySelector(`.big-img img`)
 let active = 0
 images.forEach ((object ) => {
 const template = document.getElementById(`template`).content.cloneNode(true);
-
  template.getElementById(`photo`).src = object.image;
-
  items.append(template);
 } );          
 
 let item = document.querySelector(`.item`);
 item.classList.add(`d-block`);
-
 let img = document.querySelectorAll(`.item`);
 bigImg.src = images[active].image;
 let titleScroll =  document.getElementById(`title`);
