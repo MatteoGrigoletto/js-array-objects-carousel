@@ -63,13 +63,13 @@ button{
 .after{
     bottom: 0%;
 }
-.d-block{
+.d-select{
     display: block;
     border: 3px solid rgb(240, 185, 160);
     filter: none;
     transform: scale(1.05);
 }
-.item:not(.d-block){
+.item:not(.d-select){
     filter:sepia(1);
 }
 #information {

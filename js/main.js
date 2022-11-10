@@ -24,33 +24,29 @@ const images = [
     }
 ];
 //function
-function up() {
-    img[active].classList.remove(`d-block`);
+function up(string) {
+    img[active].classList.remove(`d-select`);
+ if(string ==`next`){
     if(active == img.length-1){
         active = 0;
-    }
+        }
     else{
         active++;
         }
-    img[active].classList.add('d-block');
+    }
+    else if (string == `before`){
+        if(active == 0){   
+            active = img.length-1;
+            }
+            else{
+                active--;
+            }
+    }
+    img[active].classList.add('d-select');
     bigImg.src = images[active].image;
     titleScroll.innerHTML = images[active].title;
     textScroll.innerHTML = images[active].text;
 };
-
-function bottom(){
-    img[active].classList.remove('d-block');
-    if(active == 0){   
-        active = img.length-1;
-        }
-        else{
-            active--;
-        }
-        img[active].classList.add('d-block');
-        bigImg.src = images[active].image;
-        titleScroll.innerHTML = images[active].title;
-        textScroll.innerHTML = images[active].text;
-    }; 
 //end function
 
 let items = document.querySelector('.items');
@@ -63,7 +59,7 @@ const template = document.getElementById(`template`).content.cloneNode(true);
 } );          
 
 let item = document.querySelector(`.item`);
-item.classList.add(`d-block`);
+item.classList.add(`d-select`);
 let img = document.querySelectorAll(`.item`);
 let titleScroll =  document.getElementById(`title`);
 let textScroll =  document.getElementById(`text`);
@@ -72,16 +68,23 @@ let textScroll =  document.getElementById(`text`);
 //bigImg.src = images[active].image;
 //titleScroll.innerHTML = images[active].title;
 //textScroll.innerHTML = images[active].text;
-document.querySelector('.after').addEventListener("click" , up);
-document.querySelector('.before').addEventListener("click" , bottom);
+document.querySelector('.after').addEventListener("click" , function(){
+    up(`next`);
+});
+document.querySelector('.before').addEventListener("click" , function(){
+    up(`before`);
+});
 //interval function
-let play = setInterval(up, 3000);
+let play = setInterval( function(){
+    up(`next`);
+},  3000);
 let playBtn = document.getElementById(`play`);
 let stopBtn = document.getElementById(`stop`);
-
 stopBtn.addEventListener(`click`, function(){
     clearInterval(play);
 });
 playBtn.addEventListener(`click`, function(){
-    play = setInterval(bottom, 3000);
+    play = setInterval( function(){
+        up(`before`);
+    },  3000);
 });
